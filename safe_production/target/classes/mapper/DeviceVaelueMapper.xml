@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sofwin.mapper.DeviceValueMapper">
+
+    <select id="selectValues" resultType="map">
+        select a.*,b.name from tb_device_value a left join
+            tb_device b on a.dev_id = b.id order by a.id desc
+    </select>
+
+    <select id="selectCgqDate" resultType="String">
+        select a.create_time as createTime from tb_device_value a
+      left join tb_device b on a.dev_id = b.id
+        where b.flag = -1 order by a.create_time asc
+    </select>
+    <select id="selectCgqValue" resultType="float">
+    select convert(a.num,decimal(10,3)) from tb_device_value a
+                                                left join tb_device b on a.dev_id = b.id
+        where b.flag = -1 order by a.create_time asc
+    </select>
+    <select id="devNewValue" resultType="float">
+        select convert(a.num,decimal(10,3)) from tb_device_value a
+                                                     left join tb_device b on a.dev_id = b.id
+        where b.flag = -1 order by a.id desc limit 1
+    </select>
+    <resultMap id="map1" type="com.sofwin.pojo.Device">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="dev_port" property="devPort"/>
+        <result column="lng" property="lng"/>
+        <result column="lat" property="lat"/>
+        <result column="flag" property="flag"/>
+        <result column="max_warn" property="maxWarn"/>
+        <result column="min_warn" property="minWarn"/>
+    </resultMap>
+    <select id="seletAllDevices" resultType="com.sofwin.pojo.Device">
+        select * from tb_device
+    </select>
+    <select id="selectOnlineDevices" resultType="com.sofwin.pojo.Device">
+        select * from tb_device where flag = 1
+    </select>
+    <select id="selectOfflineDevices" resultType="com.sofwin.pojo.Device">
+        SELECT d.*
+        FROM tb_device d
+                 left JOIN (SELECT dev_id, MAX(num) AS num
+                            FROM tb_device_value
+                            GROUP BY dev_id) v ON d.id = v.dev_id
+        where CAST(d.max_warn AS DECIMAL) &lt; CAST(v.num AS DECIMAL)
+          and d.flag = 1
+    </select>
+    <select id="selectNew" resultType="com.sofwin.pojo.Device">
+        select  * from tb_device order by id desc limit 0,1
+    </select>
+    <update id="updateDevices" parameterType="com.sofwin.pojo.Device">
+        update tb_device
+        set flag = #{flag}
+        where id = #{id}
+
+    </update>
+
+    <!-- 查询设备总数 -->
+    <select id="countDevices" resultType="Long">
+        SELECT COUNT(*) FROM tb_device
+    </select>
+
+    <!-- 分页查询设备数据 -->
+    <select id="selectDevicesWithPagination" resultType="com.sofwin.pojo.Device">
+        SELECT * FROM tb_device
+        ORDER BY id DESC
+            LIMIT #{offset}, #{size}
+    </select>
+</mapper>

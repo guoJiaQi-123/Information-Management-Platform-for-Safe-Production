@@ -1,0 +1,87 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+    <title>气体检测管理平台</title>
+
+    <link href="css/style02.css" rel="stylesheet" type="text/css">
+    <link href="js/bstable/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="js/bstable/css/bootstrap-table.css" rel="stylesheet" type="text/css">
+    <link href="js/scroll/css/liMarquee.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+    .div_home2 {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+        background-image: url(../img/bg2.jpg);
+        margin: 0 auto;
+    }
+    th,td{
+      color: #FFFFff;
+        text-align: center;
+    }
+    th{
+        font-weight: bold;
+    }
+</style>
+<body onload="change1(),change()">
+<script src="js/jquery.js"></script>
+<script src="js/layer_v2.1/layer/layer.js"></script>
+<script src="js/echarts/echarts-all.js"></script>
+<script src="js/bstable/js/bootstrap.min.js"></script>
+<script src="js/bstable/js/bootstrap-table.js"></script>
+<script src="js/bstable/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="js/home_table.js"></script>
+<!--<script src="js/home_chart.js"></script>-->
+<script type="text/javascript" src="js/scroll/js/jquery.liMarquee.js"></script>
+<div class="div_home2" style="text-align: center;">
+
+    <table style="width:98%; border-collapse:collapse;">
+        <tr>
+            <th style="border:1px solid white; padding:8px;  color:white;">Header 1</th>
+            <th style="border:1px solid white; padding:8px;  color:white;">Header 2</th>
+            <th style="border:1px solid white; padding:8px;  color:white;">Header 3</th>
+        </tr>
+        <tr>
+            <td style="border:1px solid white; padding:8px;  color:white;">1</td>
+            <td style="border:1px solid white; padding:8px;  color:white;">2</td>
+            <td style="border:1px solid white; padding:8px;  color:white;">3</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid white; padding:8px;  color:white;">1</td>
+            <td style="border:1px solid white; padding:8px;  color:white;">2</td>
+            <td style="border:1px solid white; padding:8px;  color:white;">3</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid white; padding:8px;  color:white;">1</td>
+            <td style="border:1px solid white; padding:8px;  color:white;">2</td>
+            <td style="border:1px solid white; padding:8px;  color:white;">3</td>
+        </tr>
+    </table>
+
+    </div>
+
+
+
+
+</div>
+<script>
+
+    function change1() {
+
+        var w01 = $(window).width();
+        $(".home_title1").css('width', w01 - 600+"px");
+    }
+    function change() {
+        var th01 = $(window).height();
+        $(".div_right").css('height', th01 - 24+"px");
+
+    }
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+<title>气体检测管理平台</title>
+
+<link href="css/style02.css" rel="stylesheet" type="text/css">
+    <link href="js/bstable/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="js/bstable/css/bootstrap-table.css" rel="stylesheet" type="text/css">
+    <link href="js/scroll/css/liMarquee.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js"></script>
+    <script src="js/layer_v2.1/layer/layer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+    <script src="js/bstable/js/bootstrap.min.js"></script>
+    <script src="js/bstable/js/bootstrap-table.js"></script>
+    <script src="js/bstable/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="js/home_table.js"></script>
+    <!--<script src="js/home_chart.js"></script>-->
+    <script type="text/javascript" src="js/scroll/js/jquery.liMarquee.js"></script>
+</head>
+<style>
+    .warn-div {
+        width: 237px;
+        height: 135px;
+        background-color: lightblue;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+    }
+    .layui-layer-title{
+        background: blue;
+        color: #FFFFff;
+    }
+</style>
+<body onload="change1(),change()" style="overflow-x: hidden">
+<div class="warn-div" id="warn">
+    <img src="warning.gif">
+</div>
+
+
+<div class="div_home">
+
+   <div class="home_title">
+
+   </div>
+<div class="clear"></div>
+
+    <div class="left_top" style="margin-top: -4%">设备数据实时显示</div>
+<div class="right_top"style="margin-top: -4%" >设备数据实时监控<span id="devName"></span></div>
+<div class="clear"></div>
+    <div class="left_con1">
+        <div class="con_p1">
+<div class="p_a">
+    <span class="p_a01">总设<p>备数</p></span><span class="p_a02" id="p01">0</span>
+</div>
+            <div class="p_a">
+                <span class="p_a01">在线<p>设备</p></span><span class="p_a03" id="p02">0</span>
+            </div>
+        </div>
+        <div class="con_p1">
+            <div class="p_a">
+                <span class="p_a01">离线<p>设备</p></span><span class="p_a02" id="p03">0</span>
+            </div>
+            <div class="p_a">
+                <span class="p_a01">报警<p>设备</p></span><span class="p_a03" id="p04">0</span>
+            </div>
+        </div>
+    </div>
+<div class="right_con1" >
+    <div id="con1" style="width: 100%;height: 100%;margin-left: 2%;margin-top: 2%;overflow: hidden">
+        <div id="con1_1" style="width: 505px;height:190px"></div>
+    </div>
+</div>
+<div class="clear"></div>
+    <div class="left_top">设备状态分析</div>
+<div class="right_top" >气体实时监测</div>
+<div class="clear"></div>
+    <div class="left_con2">
+        <h5 class="h_style"><i class="i_h"></i><span>案件xxx量</span></h5>
+
+            <div id="left02" style="width: 100%;height: 85%;padding: 0;margin-top: 0%;margin-left: 2%"></div>
+    </div>
+<div class="right_con2">
+    <div id="con2" style="width: 98%;height: 98%;margin: 0;padding: 5%"></div>
+</div>
+<div class="clear"></div>
+    <div class="left_top">实时报警信息</div>
+<div class="right_top" style="margin-top: -1.5%">移动端信息上报</div>
+<div class="clear"></div>
+<div class="left_con3">
+    <div class="ul_top"><span>等级</span><span>名称</span><span>含量</span><span>时间</span></div>
+    <div style="width: 96%;height: 96%;background: transparent;margin-top: 2%" id="div01" >
+   <ul class="ul_con"  >
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路1</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路2</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路3</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路4</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路5</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路6</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: green">严重</span><span>xxx道路7</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路8</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路9</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路10</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: deepskyblue">严重</span><span>xxx道路11</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路12</span><span>拥堵</span><span>1/13:00</span></a> </li>
+       <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路13</span><span>拥堵</span><span>1/13:00</span></a> </li>
+   </ul>
+    </div>
+</div>
+<div class="right_con3"style="margin-top: -2%" id="r03">
+    <div class="ul_top"><span>等级</span><span>名称</span><span>案情</span><span>时间</span></div>
+    <div style="width: 96%;height: 96%;background: transparent;margin-top: 2%" id="div02" >
+    <ul class="ul_con" >
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: deepskyblue">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: green">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+        <li><a href="javascript:void(0)"><span style="color: red">严重</span><span>xxx道路</span><span>拥堵</span><span>1/13:00</span></a> </li>
+    </ul>
+</div>
+</div>
+    <div class="clear"></div>
+
+<div class="div_bottom"><div class="bot_left"><a href="#" onclick="add()" class="title_but">视频监控 </a><a href="#" class="title_but"  onclick="addFind()">信息查询 </a></div> <ul>
+    <li><a href="javascript:void(0)"><img src="img/defaut.png"/> </a> </li>
+    <li><a href="javascript:void(0)"><img src="img/max.png"/> </a> </li>
+    <li><a href="javascript:void(0)"><img src="img/min.png"/> </a> </li>
+    <li><a href="javascript:void(0)"><img src="img/cheliangbukong.png"/> </a> </li>
+    <li><a href="javascript:void(0)"><img src="img/renyuanbukong.png"/> </a> </li>
+    <li><a href="javascript:void(0)"><img src="img/jinyuan.png"/> </a> </li>
+    <li><a href="javascript:void(0)"><img src="img/jiankong.png"/> </a> </li>
+    <li><a href="javascript:void(0)"><img src="img/weizhang.png"/> </a> </li>
+    <li><a href="javascript:void(0)"><img src="img/alam01.png"/> </a> </li>
+</ul><span class="bottom_right"><a href="#" class="title_but" onclick="addAy()">综合分析</a><a href="#" class="title_but" onclick="sumitT()">问题反馈</a> </span></div>
+
+</div>
+<script>
+
+    function change1() {
+
+        var w01 = $(window).width();
+        $(".home_title1").css('width', w01 - 600+"px");
+    }
+    function change() {
+        var th01 = $(window).height();
+        $(".div_right").css('height', th01 - 24+"px");
+
+    }
+</script>
+<script>
+    $(function(){
+        $('#div01').liMarquee({
+            direction: 'down',
+            scrollamount: 30
+        });
+    });
+</script>
+<script>
+    $(function(){
+        $('#div02').liMarquee({
+            direction: 'down',
+            scrollamount: 30
+        });
+    });
+</script>
+<script>
+    $(function(){
+        var myChart = echarts.init($("#con1_1")[0]);
+        var myChart2 = echarts.init(document.getElementById('con2'));
+        var myChart1 = echarts.init($("#left02")[0]);
+        getIndexData();
+        zxt();
+        bzt();
+        setInterval(function(){
+            console.info('*********被执行了***********')
+            getIndexData();
+            bzt();
+        },2000);
+        setInterval(function(){
+            console.info('*********被执行了***********')
+            zxt();
+        },1000);
+
+        function getIndexData(){
+            console.info('方法备执行了')
+            $.ajax({
+                url: 'device/indexData',
+                type: 'get',
+                success:function(ret){
+                    var result = ret.result;
+                    $("#p01").html(result.total);
+                    $("#p02").html(result.onLine);
+                    $("#p03").html(result.ofLine);
+                    $("#p04").html(result.ofLine);
+                }
+            })
+
+        }
+        function bzt(){
+            option = {
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+//            color:['#f54100',"#474feb","34d5fc","#f4fbfd","37467b"],
+                legend: {
+                    textStyle:{
+                        color:"#0089f3"
+                    },
+                    orient : 'vertical',
+                    x : 'left',
+                    data:['案件NO01','案件NO02','案件NO03'],
+
+                },
+                color:['#f54100', '#3953ed','#34d5fc'],
+//
+                calculable : false,
+
+                series : [
+                    {
+                        name:'案件NO01',
+                        type:'pie',
+                        radius : ['50%', '80%'],
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    show : false
+                                },
+                                labelLine : {
+                                    show : false
+                                }
+                            },
+                            emphasis : {
+                                label : {
+                                    show : true,
+                                    position : 'center',
+                                    textStyle : {
+                                        fontSize : '13',
+                                        fontWeight : 'bold',
+                                        color:"#0089f3"
+                                    }
+                                }
+                            }
+                        },
+                        data:[
+                            {value:335, name:'案件NO01'},
+                            {value:310, name:'案件NO02'},
+                            {value:234, name:'案件NO03'}
+
+                        ]
+                    }
+                ]
+            };
+            myChart1.setOption(option);
+            var currentIndex = 0;
+            setInterval(function () {
+                // 计算下一个要高亮的数据项索引
+                currentIndex = (currentIndex + 1) % 2;
+                // 模拟鼠标悬停效果
+                console.info(myChart1)
+                myChart1.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: currentIndex
+                });
+            }, 3000); // 每
+            window.onresize = myChart.resize
+        }
+        function zxt(){
+            $.ajax({
+                url: 'device/mdata',
+                type: 'get',
+                success:function(ret){
+                    option = {
+
+                        tooltip : {
+                            trigger: 'axis'
+                        },
+                        grid:{
+                            x:0,
+                            y:0,
+                            bottom: 0
+
+                        },
+                        color:['white'],
+                        calculable : true,
+                        xAxis : [
+                            {
+                                type : 'category',
+                                boundaryGap : false,
+                                data : ret.result.dates,
+                                shown:false,
+                                splitLine:{show: false},
+                                axisLabel:{
+                                    color: 'yellow'
+                                }
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value',
+                                shown:false,
+                                splitLine:{show: false},//去掉网格线
+                                splitArea : {show : true}//保留网格区域
+                            }
+                        ],
+                        series : [
+                            {
+                                name:'气体数据',
+                                type:'line',
+                                smooth:true,
+                                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                                data:ret.result.values
+                            }
+                        ]
+                    };
+                    option2 = {
+                        tooltip: {
+                            formatter: '{a} <br/>{b} : {c}%'
+                        },
+                        series: [
+                            {
+                                name: 'Pressure',
+                                type: 'gauge',
+                                progress: {
+                                    show: true
+                                },
+                                detail: {
+                                    valueAnimation: true,
+                                    formatter: '{value}'
+                                },
+                                data: [
+                                    {
+                                        value: parseFloat(ret.result.newValue),
+                                        name: 'SCORE'
+                                    }
+                                ]
+                            }
+                        ]
+                    };
+                    if(parseFloat(ret.result.newValue)>parseFloat(ret.result.max)){
+                        $("#warn").show();
+                    }else{
+                        $("#warn").hide();
+                    }
+                    myChart.setOption(option);
+                    // window.onresize = myChart.resize
+                    myChart2.setOption(option2);
+                    // window.onresize = myChart2.resize
+                }
+            })
+        }
+    })
+    function add() {
+        layer.open({
+            type: 2,
+            skin: 'demo-class',
+            title: '设备管理',
+            fix: true,
+            shadeClose: true,
+            area: ['1400px', '700px'],
+            content: 'carContrl.html',
+
+        });
+    }
+    function addFind() {
+        layer.open({
+            type: 2,
+            skin: 'demo-class',
+            title: '信息查询',
+            fix: true,
+            shadeClose: true,
+            area: ['1400px', '700px'],
+            content: 'car.html',
+
+        });
+    }
+    function addAy(){
+        layer.open({
+            type: 2,
+            title: '综合分析',
+            shadeClose: true,
+            shade: 0.5,
+            skin: 'layui-layer-rim',
+            closeBtn:1,
+            area: ['80%', '700px'],
+            content: 'correctSpecial_analysis.html'
+        });
+    }
+    function sumitT(){
+        layer.open({
+            type: 2,
+            title: '信息反馈',
+            shadeClose: true,
+            shade: 0.5,
+            skin: 'layui-layer-rim',
+            closeBtn:1,
+            area: ['80%', '700px'],
+            content: 'validate.html'
+        });
+    }
+</script>
+</body>
+</html>

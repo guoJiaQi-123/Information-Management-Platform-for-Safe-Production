@@ -1,0 +1,18 @@
+server:
+  port: 9000
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///safe_production?serverTimezone=UTC
+    username: root
+    password: 123456
+    hikari:
+      minimum-idle: 100
+      maximum-pool-size: 200
+logging:
+  level:
+    com.sofwin: debug
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.sofwin.pojo
+
